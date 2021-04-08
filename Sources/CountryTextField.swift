@@ -6,7 +6,6 @@
 //  Copyright © 2018 leacode. All rights reserved.
 //
 
-#if os(iOS)
 import UIKit
 
 @objc public class CountryTextField: UITextField {
@@ -41,12 +40,12 @@ import UIKit
         picker = Picker(textField: self)
         picker?.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldDidBeginEditing(tf:)), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldDidBeginEditing(tf:)), name: NSNotification.Name.NSMetadataQueryDidStartGathering, object: self)
         
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: self)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NSMetadataQueryDidStartGathering, object: self)
     }
     
     @objc private func textFieldDidBeginEditing(tf: UITextField) {
@@ -67,6 +66,3 @@ extension CountryTextField: CountryPickerDelegate {
     
     
 }
-
-
-#endif

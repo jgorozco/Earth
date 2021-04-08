@@ -7,14 +7,15 @@ let package = Package(
     name: "Earth",
     platforms: [.iOS(.v12)],
     products: [
-        .library(name: "Earth", targets: ["Earth"]),
+        .library(name: "Earth",
+                 targets: ["Earth"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Earth", 
+            name: "Earth",
             dependencies: [],
-         //   sources : "Sources/ios/",
+            path: "Sources",
             resources: [
                  .process("Resources")]),
     ]

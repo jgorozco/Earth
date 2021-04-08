@@ -93,7 +93,7 @@ class CountriesViewController: BaseCountryTableViewController {
 
         configureSearchController()
         
-        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(self.cancel))
+        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.cancel))
         leftItem.tintColor = settings?.cancelButtonColor ?? UIColor.blue
         self.navigationItem.leftBarButtonItem = leftItem
         

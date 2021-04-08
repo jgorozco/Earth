@@ -91,14 +91,14 @@ public class Picker: UIControl, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         toolbar.sizeToFit()
         
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
         let doneButton: UIBarButtonItem!
         
         if let doneButtonText = settings.doneButtonText {
-            doneButton = UIBarButtonItem(title: doneButtonText, style: UIBarButtonItemStyle.done, target: self, action: #selector(done(barButton:)))
+            doneButton = UIBarButtonItem(title: doneButtonText, style: UIBarButtonItem.Style.done, target: self, action: #selector(done(barButton:)))
         } else {
-            doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(done(barButton:)))
+            doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(done(barButton:)))
         }
         if let doneButtonColor = settings.doneButtonColor {
             doneButton.tintColor = doneButtonColor
@@ -108,9 +108,9 @@ public class Picker: UIControl, UIPickerViewDelegate, UIPickerViewDataSource, UI
             let cancelButton: UIBarButtonItem!
             
             if let cancelButtonText = settings.cancelButtonText {
-                cancelButton = UIBarButtonItem(title: cancelButtonText, style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancel(barButton:)))
+                cancelButton = UIBarButtonItem(title: cancelButtonText, style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancel(barButton:)))
             } else {
-                cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(cancel(barButton:)))
+                cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancel(barButton:)))
             }
             
             if let cancelButtonColor = settings.cancelButtonColor {
@@ -142,7 +142,7 @@ public class Picker: UIControl, UIPickerViewDelegate, UIPickerViewDataSource, UI
             delegate?.didPickCountry(self, didSelectCountry: selectedCountry)
         }
 
-        self.sendActions(for: UIControlEvents.valueChanged)
+        self.sendActions(for: UIControl.Event.valueChanged)
     }
     
     @objc @IBAction func cancel(barButton: UIBarButtonItem) {
@@ -196,7 +196,7 @@ public class Picker: UIControl, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let item = items.first, item is String { self.textField.text = items[row] as? String }
-        self.sendActions(for: UIControlEvents.valueChanged)
+        self.sendActions(for: UIControl.Event.valueChanged)
     }
     
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -293,12 +293,12 @@ public class Picker: UIControl, UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
     
     public func textFieldDidBeginEditing(_ aTextField: UITextField) {
-        self.sendActions(for: UIControlEvents.editingDidBegin)
+        self.sendActions(for: UIControl.Event.editingDidBegin)
     }
     
     public func textFieldDidEndEditing(_ aTextField: UITextField) {
         aTextField.isUserInteractionEnabled = true
-        self.sendActions(for: UIControlEvents.editingDidEnd)
+        self.sendActions(for: UIControl.Event.editingDidEnd)
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
