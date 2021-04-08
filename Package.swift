@@ -5,12 +5,16 @@ import PackageDescription
 
 let package = Package(
     name: "Earth",
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "Earth", targets: ["Earth"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Earth", dependencies: []),
+            name: "Earth", 
+            dependencies: [],
+            resources: [
+                 .process("Resources")])),
     ]
 )
