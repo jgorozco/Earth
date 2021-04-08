@@ -14,6 +14,7 @@ let package = Package(
         .target(
             name: "Earth", 
             dependencies: [],
+            sources : "Sources/ios/"
             resources: [
                  .process("Resources")])),
     ]
